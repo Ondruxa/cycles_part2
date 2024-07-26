@@ -5,7 +5,9 @@ public class Main {
         int deposit = 0;
         int salary = 15000;
         int mounth = 0;
-        while (deposit <= 2_459_000){
+        int hundredPercent = 100;
+        while (deposit <= 2_459_000) {
+            deposit = deposit + deposit / hundredPercent;
             deposit = deposit + salary;
             mounth++;
             System.out.println("Месяц " + mounth + ", сумма накоплений равна " + deposit + " рублей");
@@ -13,14 +15,14 @@ public class Main {
         System.out.println();
 
         System.out.println("task2");
-        int i = 1;
-        while (i <= 10){
-            System.out.print (i+ "\t");
-            i++;
-}
+        int number = 1;
+        while (number <= 10) {
+            System.out.print(number + "\t");
+            number++;
+        }
         System.out.println();
-        for (i=10; i >= 1; i--) {
-            System.out.print (i+ "\t");
+        for (number = 10; number >= 1; number--) {
+            System.out.print(number + "\t");
         }
         System.out.println("\n");
 
@@ -29,19 +31,23 @@ public class Main {
         int birthRate;
         int deathRate;
         int year;
-        for(year = 1; year <= 10; year++){
-            birthRate = population * 17/1000;
-            deathRate = population * 8/1000;
-            population = population +  birthRate - deathRate;
+        for (year = 1; year <= 10; year++) {
+            birthRate = population * 17 / 1000;
+            deathRate = population * 8 / 1000;
+            population = population + birthRate - deathRate;
             System.out.println("Год " + year + ", численность населения составляет " + population);
         }
         System.out.println();
 
         System.out.println("task4");
         int cash = 15000;           //использовал int для округления денег до целых значений
-        int numberMounth = 0;
-        for (numberMounth = 1; cash <= 12_000_000; numberMounth++){
-            cash = cash + cash/100*7/12;
+        int numberMounth;
+        int depositPercent = 7;
+        int mounthInYear = 12;
+        int percentTask4;
+        for (numberMounth = 1; cash <= 12_000_000; numberMounth++) {
+            percentTask4 = cash / hundredPercent * depositPercent / mounthInYear;
+            cash = cash + percentTask4;
             System.out.println("Месяц " + numberMounth + ", сумма накоплений равна " + cash + " рублей");
         }
 
@@ -49,9 +55,12 @@ public class Main {
 
         System.out.println("task5");
         int cash2 = 15000;           //использовал int для округления денег до целых значений
-        int numberMounth2 = 0;
-        for (numberMounth2 = 1; cash2 <= 12_000_000; numberMounth2++) {
-            cash2 = cash2 + cash2 / 100 * 7 / 12;   //  /100*7/12 - процент в месяц
+        int numberMounth2;
+        int finalCash = 12_000_000;
+        int percentTask5;
+        for (numberMounth2 = 1; cash2 <= finalCash; numberMounth2++) {
+            percentTask5 = cash2 / hundredPercent * depositPercent / mounthInYear;
+            cash2 = cash2 + percentTask5;   //  /100*7/12 - процент в месяц
             if (numberMounth2 % 6 == 0) {
                 System.out.println("Месяц " + numberMounth2 + ", сумма накоплений равна " + cash2 + " рублей");
             }
@@ -61,34 +70,42 @@ public class Main {
 
         System.out.println("task6");
         int mounthTask6;
-        int summ = 15000;
-        for (mounthTask6 = 1; mounthTask6 <= 12*9; mounthTask6++){
-            summ = summ + summ / 100 * 7 / 12;
-            if (mounthTask6 % 6 == 0){
-                System.out.println("Месяц " + mounthTask6 + ", сумма накоплений равна " + summ + " рублей");
+        int depositTask6 = 15000;
+        int percentTask6;
+        for (mounthTask6 = 1; mounthTask6 <= 12 * 9; mounthTask6++) {
+            percentTask6 = depositTask6 / hundredPercent * depositPercent / mounthInYear;
+            depositTask6 = depositTask6 + percentTask6;
+            if (mounthTask6 % 6 == 0) {
+                System.out.println("Месяц " + mounthTask6 + ", сумма накоплений равна " + depositTask6 + " рублей");
             } else {
-            System.out.println("Месяц " + mounthTask6);
+                System.out.println("Месяц " + mounthTask6);
             }
         }
         System.out.println();
 
         System.out.println("task7");
-        int data = 4;
-        while (data <= 31){
-            System.out.println("Сегодня пятница, " + data + "-е число. Необходимо подготовить отчет");
-            data += 7;
+        int friday = 4;
+        int daysInMounth = 31;
+        int daysInWeek = 7;
+        while (friday <= daysInMounth) {
+            System.out.println("Сегодня пятница, " + friday + "-е число. Необходимо подготовить отчет");
+            friday += daysInWeek;
         }
         System.out.println();
 
         System.out.println("task8");
         int presentYear = 2024;
-        int startYear = presentYear - 200;
-        int endYear = presentYear + 100;
+        int numberForStart = 200;
+        int startYear = presentYear - numberForStart;
+        int numberFoeEnd = 100;
+        int endYear = presentYear + numberFoeEnd;
+        int iterationYear = 79;
         int countYear;
-        for (countYear = 0; countYear <= endYear; countYear += 79) {
-            if (countYear >= startYear){
+        for (countYear = 0; countYear <= endYear; countYear += iterationYear) {
+            if (countYear >= startYear) {
                 System.out.println(countYear);
             }
         }
     }
+
 }
